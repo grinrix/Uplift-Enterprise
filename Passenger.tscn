@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://b3oe4hcr3pdwd"]
+
+[ext_resource type="Script" uid="uid://py8kqnlak6mn" path="res://Passenger.gd" id="1_0tmcw"]
+[ext_resource type="Texture2D" uid="uid://i42erp10bmx6" path="res://Assets/PassengerIdle.png" id="1_26en0"]
+[ext_resource type="Texture2D" uid="uid://b4v1rh2of6igg" path="res://Assets/PassengerWalking.png" id="2_k0ywr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tmcw"]
+atlas = ExtResource("2_k0ywr")
+region = Rect2(0, 0, 80, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhg0l"]
+atlas = ExtResource("2_k0ywr")
+region = Rect2(80, 0, 80, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvcvb"]
+atlas = ExtResource("2_k0ywr")
+region = Rect2(160, 0, 80, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh5qv"]
+atlas = ExtResource("2_k0ywr")
+region = Rect2(240, 0, 80, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ieu56"]
+atlas = ExtResource("2_k0ywr")
+region = Rect2(320, 0, 80, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7jkx"]
+atlas = ExtResource("2_k0ywr")
+region = Rect2(400, 0, 80, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uty4"]
+atlas = ExtResource("2_k0ywr")
+region = Rect2(480, 0, 80, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1teen"]
+atlas = ExtResource("2_k0ywr")
+region = Rect2(560, 0, 80, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k0ywr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_26en0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tmcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhg0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvcvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qh5qv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ieu56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7jkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uty4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1teen")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 8.0
+}]
+
+[node name="Passenger" type="Node2D"]
+script = ExtResource("1_0tmcw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 62)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_k0ywr")
+animation = &"walking"
+autoplay = "walking"
+frame_progress = 0.8085319
+
+[node name="Label" type="Label" parent="."]
+offset_left = -23.0
+offset_top = 6.0
+offset_right = 17.0
+offset_bottom = 29.0
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1

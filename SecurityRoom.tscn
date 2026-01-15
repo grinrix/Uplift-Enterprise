@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://r04bfu67fn3t"]
+
+[ext_resource type="Script" uid="uid://bboyo8ujf2eq3" path="res://SecurityRoom.gd" id="1_mc320"]
+[ext_resource type="Texture2D" uid="uid://cw8omhvneifim" path="res://Assets/room_bg.png" id="2_l3kad"]
+[ext_resource type="PackedScene" uid="uid://dy8iabomvheh5" path="res://GameMap.tscn" id="3_m0nhq"]
+[ext_resource type="Texture2D" uid="uid://cuuyhoakgh2lk" path="res://icon.svg" id="3_pj1b5"]
+[ext_resource type="Script" uid="uid://crrq78n42foeg" path="res://generator.gd" id="4_l3kad"]
+[ext_resource type="Texture2D" uid="uid://i42erp10bmx6" path="res://Assets/PassengerIdle.png" id="4_mc1lk"]
+[ext_resource type="Texture2D" uid="uid://pucotbc8304" path="res://Assets/elevator.png" id="5_0yyox"]
+[ext_resource type="PackedScene" uid="uid://yopusshe38f5" path="res://MinigameManager.tscn" id="7_mc1lk"]
+
+[sub_resource type="SystemFont" id="SystemFont_l3kad"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m0nhq"]
+font = SubResource("SystemFont_l3kad")
+font_size = 21
+
+[node name="SecurityRoom" type="Node2D"]
+script = ExtResource("1_mc320")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_l3kad")
+centered = false
+
+[node name="Generator" type="TextureProgressBar" parent="."]
+offset_left = 452.0
+offset_top = 192.0
+offset_right = 580.0
+offset_bottom = 324.0
+step = 0.0
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("3_pj1b5")
+texture_over = ExtResource("4_mc1lk")
+texture_progress = ExtResource("5_0yyox")
+script = ExtResource("4_l3kad")
+
+[node name="Minigames" type="SubViewportContainer" parent="."]
+offset_left = 1262.0
+offset_top = 340.0
+offset_right = 1688.0
+offset_bottom = 555.0
+
+[node name="SubViewport" type="SubViewport" parent="Minigames"]
+handle_input_locally = false
+size = Vector2i(410, 215)
+render_target_update_mode = 4
+
+[node name="MinigameManager" parent="Minigames/SubViewport" instance=ExtResource("7_mc1lk")]
+
+[node name="ElevetorCam" type="SubViewportContainer" parent="."]
+offset_left = 631.0
+offset_top = 170.0
+offset_right = 1057.0
+offset_bottom = 370.0
+
+[node name="SubViewport" type="SubViewport" parent="ElevetorCam"]
+handle_input_locally = false
+size = Vector2i(410, 215)
+render_target_update_mode = 4
+
+[node name="GameMap" parent="ElevetorCam/SubViewport" instance=ExtResource("3_m0nhq")]
+scale = Vector2(0.3, 0.3)
+
+[node name="Clock" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_m0nhq")

@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://by76euls5jola"]
+
+[ext_resource type="Texture2D" uid="uid://c3euwjd235kpj" path="res://Assets/panoramatest.png" id="1_rdvea"]
+[ext_resource type="Texture2D" uid="uid://dvgyb6dwkkrd6" path="res://Assets/5-2-telephone-png-hd.png" id="2_p4yuy"]
+[ext_resource type="Script" uid="uid://b3y6jeroujw0n" path="res://camera_3d.gd" id="2_rdvea"]
+[ext_resource type="PackedScene" uid="uid://dy8iabomvheh5" path="res://GameMap.tscn" id="3_rdvea"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_n7fyb"]
+radius = 10.0
+height = 20.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v12i8"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_rdvea")
+
+[sub_resource type="SystemFont" id="SystemFont_l3kad"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p4yuy"]
+font = SubResource("SystemFont_l3kad")
+font_size = 21
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p4yuy"]
+viewport_path = NodePath("GameViewport")
+
+[node name="SecurityRoom3D" type="Node3D"]
+
+[node name="RoomSphere" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_n7fyb")
+surface_material_override/0 = SubResource("StandardMaterial3D_v12i8")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.09017551, 0, -0.17851716, 0, 0.2, 0, 0.17851716, 0, 0.09017551, 5.171317, -1.3010863, -6.4841614)
+alpha_cut = 1
+texture = ExtResource("2_p4yuy")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("2_rdvea")
+
+[node name="Clock" type="Label" parent="Camera3D"]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_p4yuy")
+
+[node name="GameViewport" type="SubViewport" parent="."]
+size = Vector2i(1280, 720)
+
+[node name="GameMap" parent="GameViewport" instance=ExtResource("3_rdvea")]
+
+[node name="MonitorScreen2" type="Sprite3D" parent="."]
+transform = Transform3D(0.012464486, 0, 0.12186424, 0, 0.27562487, 0, -0.12186424, 0, 0.012464486, -5.9341083, -1.0338883, -6.8850183)
+transparent = false
+texture = SubResource("ViewportTexture_p4yuy")
+
+[node name="MonitorScreen" type="Sprite3D" parent="."]
+transform = Transform3D(0.55, 0, 0, 0, 0.825, 0, 0, 0, 0.55, 1.5579426, -0.5238757, -11.401267)
+transparent = false
+texture = SubResource("ViewportTexture_p4yuy")

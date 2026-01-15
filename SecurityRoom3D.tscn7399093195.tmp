@@ -1,0 +1,139 @@
+[gd_scene load_steps=19 format=3 uid="uid://by76euls5jola"]
+
+[ext_resource type="Texture2D" uid="uid://c3euwjd235kpj" path="res://Assets/panoramatest.png" id="1_rdvea"]
+[ext_resource type="Script" uid="uid://dwgeok080ac1f" path="res://SecurityRoom3D.gd" id="1_vapsd"]
+[ext_resource type="Script" uid="uid://b3y6jeroujw0n" path="res://camera_3d.gd" id="2_rdvea"]
+[ext_resource type="PackedScene" uid="uid://dy8iabomvheh5" path="res://GameMap.tscn" id="3_rdvea"]
+[ext_resource type="Texture2D" uid="uid://cuuyhoakgh2lk" path="res://icon.svg" id="4_0ek2n"]
+[ext_resource type="Texture2D" uid="uid://i42erp10bmx6" path="res://Assets/PassengerIdle.png" id="5_vapsd"]
+[ext_resource type="Texture2D" uid="uid://pucotbc8304" path="res://Assets/elevator.png" id="6_6y15s"]
+[ext_resource type="Script" uid="uid://crrq78n42foeg" path="res://generator.gd" id="7_68c40"]
+[ext_resource type="PackedScene" uid="uid://yopusshe38f5" path="res://MinigameManager.tscn" id="8_0ek2n"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_n7fyb"]
+radius = 10.0
+height = 20.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v12i8"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_rdvea")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_240jw"]
+viewport_path = NodePath("Hardware/GeneratorViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0ek2n"]
+viewport_path = NodePath("Hardware/SwitchViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vapsd"]
+
+[sub_resource type="SystemFont" id="SystemFont_l3kad"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p4yuy"]
+font = SubResource("SystemFont_l3kad")
+font_size = 21
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vapsd"]
+viewport_path = NodePath("Hardware/MinigamesViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p4yuy"]
+viewport_path = NodePath("Hardware/GameViewport")
+
+[node name="SecurityRoom3D" type="Node3D"]
+script = ExtResource("1_vapsd")
+
+[node name="RoomSphere" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_n7fyb")
+surface_material_override/0 = SubResource("StandardMaterial3D_v12i8")
+
+[node name="GeneratorSprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.25233436, 0, -0.16225709, 0, 0.29999998, 0, 0.16225709, 0, 0.25233436, 5.6719704, 0.28474474, -6.4680033)
+alpha_cut = 1
+texture = SubResource("ViewportTexture_240jw")
+
+[node name="SwitchMode" type="Sprite3D" parent="."]
+transform = Transform3D(0.99361724, 0, 0.112804376, 0, 1, 0, -0.112804376, 0, 0.99361724, -4.6515074, 1.2158873, -7.46021)
+alpha_cut = 1
+texture = SubResource("ViewportTexture_0ek2n")
+
+[node name="SwitchArea" type="Area3D" parent="SwitchMode"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwitchMode/SwitchArea"]
+transform = Transform3D(7.153794, 0, -2.9802322e-07, 0, 1.6499388, 0, -1.1920929e-07, 0, 7.5467806, -0.21824813, 0.25696886, 0.7505603)
+shape = SubResource("BoxShape3D_vapsd")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.3526326, 0, -2.6777575, 0, 3, 0, 2.6777575, 0, 1.3526326, 5.171317, -0.58400524, -6.4841614)
+alpha_cut = 1
+texture = ExtResource("5_vapsd")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("2_rdvea")
+
+[node name="Clock" type="Label" parent="Camera3D"]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_p4yuy")
+
+[node name="MonitorScreen2" type="Sprite3D" parent="."]
+transform = Transform3D(0.13581172, 0, 0.08658312, 0, 0.27562487, 0, -0.16002472, 0, 0.07348241, -5.597652, -1.0345541, -6.8809376)
+transparent = false
+texture = SubResource("ViewportTexture_vapsd")
+
+[node name="MonitorScreen" type="Sprite3D" parent="."]
+transform = Transform3D(0.55, 0, 0, 0, 0.825, 0, 0, 0, 0.55, 1.5579426, -0.5238757, -11.401267)
+transparent = false
+texture = SubResource("ViewportTexture_p4yuy")
+
+[node name="Hardware" type="Node" parent="."]
+
+[node name="GameViewport" type="SubViewport" parent="Hardware"]
+size = Vector2i(1280, 720)
+
+[node name="GameMap" parent="Hardware/GameViewport" instance=ExtResource("3_rdvea")]
+
+[node name="GeneratorViewport" type="SubViewport" parent="Hardware"]
+size = Vector2i(200, 600)
+render_target_update_mode = 4
+
+[node name="Generator" type="TextureProgressBar" parent="Hardware/GeneratorViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.0
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("4_0ek2n")
+texture_over = ExtResource("5_vapsd")
+texture_progress = ExtResource("6_6y15s")
+script = ExtResource("7_68c40")
+
+[node name="MinigamesViewport" type="SubViewport" parent="Hardware"]
+size = Vector2i(640, 480)
+render_target_update_mode = 4
+
+[node name="Minigames" type="SubViewportContainer" parent="Hardware/MinigamesViewport"]
+offset_left = 1262.0
+offset_top = 340.0
+offset_right = 1688.0
+offset_bottom = 555.0
+
+[node name="SubViewport" type="SubViewport" parent="Hardware/MinigamesViewport/Minigames"]
+handle_input_locally = false
+size = Vector2i(410, 215)
+render_target_update_mode = 4
+
+[node name="MinigameManager" parent="Hardware/MinigamesViewport/Minigames/SubViewport" instance=ExtResource("8_0ek2n")]
+
+[node name="SwitchViewport" type="SubViewport" parent="Hardware"]
+size = Vector2i(200, 100)
+render_target_update_mode = 4
+
+[node name="ModeSwitch" type="CheckButton" parent="Hardware/SwitchViewport"]
+offset_right = 168.0
+offset_bottom = 31.0
+text = "Mode: Dynamic"
