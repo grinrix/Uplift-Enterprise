@@ -10,6 +10,10 @@ var base_y = 0.0
 # timer
 var spawn_timer = Timer.new()
 
+# system oceniania
+var score_points = 0
+var mistakes = 0
+
 func _ready():
 	base_y = elevator.position.y
 	
@@ -139,3 +143,10 @@ func _on_passenger_entered(passenger):
 		# sprawdzamy ponownie czy ktoś kolejny nie zaczął wsiadać
 		if passengers_boarding_count <= 0:
 			elevator.close_doors()
+
+# system oceniania
+func calculate_grade():
+	if mistakes > 5: return "F"
+	if mistakes > 3: return "D"
+	if score_points > 5000: return "S"
+	return "A"

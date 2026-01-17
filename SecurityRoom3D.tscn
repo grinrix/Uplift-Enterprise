@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://by76euls5jola"]
+[gd_scene load_steps=22 format=3 uid="uid://by76euls5jola"]
 
 [ext_resource type="Texture2D" uid="uid://c3euwjd235kpj" path="res://Assets/panoramatest.png" id="1_rdvea"]
 [ext_resource type="Script" uid="uid://dwgeok080ac1f" path="res://SecurityRoom3D.gd" id="1_vapsd"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://i42erp10bmx6" path="res://Assets/PassengerIdle.png" id="5_vapsd"]
 [ext_resource type="PackedScene" uid="uid://csqtiun7r24b2" path="res://generator.tscn" id="6_240jw"]
 [ext_resource type="PackedScene" uid="uid://yopusshe38f5" path="res://MinigameManager.tscn" id="8_0ek2n"]
+[ext_resource type="Script" uid="uid://dcpi3lwmepkqb" path="res://LaptopPanel.gd" id="10_6y15s"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_n7fyb"]
 radius = 10.0
@@ -151,3 +152,14 @@ grow_vertical = 2
 offset_right = 168.0
 offset_bottom = 31.0
 text = "Mode: Dynamic"
+
+[node name="LaptopLayer" type="CanvasLayer" parent="."]
+
+[node name="LaptopPanel" type="Control" parent="LaptopLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_6y15s")
