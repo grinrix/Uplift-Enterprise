@@ -31,6 +31,8 @@ shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
 
 [node name="GameMap" type="Node2D"]
+position = Vector2(-220, -50)
+scale = Vector2(1.2, 1.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 39)
@@ -42,9 +44,9 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 1054.0
+offset_left = 1077.0
 offset_top = 39.0
-offset_right = 1254.0
+offset_right = 1237.0
 offset_bottom = 639.0
 grow_horizontal = 2
 grow_vertical = 2

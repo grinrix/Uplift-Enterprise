@@ -96,7 +96,7 @@ offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_p4yuy")
 
 [node name="MonitorScreen2" type="Sprite3D" parent="."]
-transform = Transform3D(0.18149671, 0, 0.28159812, 0, 0.395, 0, -0.3564533, 0, 0.1433824, -5.597652, -1.0345541, -6.9426107)
+transform = Transform3D(0.18149671, 0, 0.28159815, 0, 0.395, 0, -0.3564533, 0, 0.14338242, -5.597652, -1.0345541, -6.9426107)
 transparent = false
 texture = SubResource("ViewportTexture_vapsd")
 script = ExtResource("5_0ek2n")
@@ -108,7 +108,7 @@ transform = Transform3D(6.4, 0, 0, 0, 4.8, 0, 0, 0, 0.01, 0, 0, 0)
 shape = SubResource("BoxShape3D_6y15s")
 
 [node name="MonitorScreen" type="Sprite3D" parent="."]
-transform = Transform3D(0.55, 0, 0, 0, 0.825, 0, 0, 0, 0.55, 1.5579426, -0.5238757, -11.401267)
+transform = Transform3D(0.55, 0, 0, 0, 0.72, 0, 0, 0, 0.5, 1.558, -0.48, -11.401)
 transparent = false
 texture = SubResource("ViewportTexture_p4yuy")
 
