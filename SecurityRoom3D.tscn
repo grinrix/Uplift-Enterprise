@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://by76euls5jola"]
+[gd_scene load_steps=26 format=3 uid="uid://by76euls5jola"]
 
 [ext_resource type="Texture2D" uid="uid://c3euwjd235kpj" path="res://Assets/panoramatest.png" id="1_rdvea"]
 [ext_resource type="Script" uid="uid://dwgeok080ac1f" path="res://SecurityRoom3D.gd" id="1_vapsd"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://yopusshe38f5" path="res://MinigameManager.tscn" id="8_0ek2n"]
 [ext_resource type="Script" uid="uid://dcpi3lwmepkqb" path="res://LaptopPanel.gd" id="10_6y15s"]
 [ext_resource type="Shader" uid="uid://ol4bnpvkdj0g" path="res://crt_effect.gdshader" id="11_68c40"]
+[ext_resource type="PackedScene" uid="uid://48nhysgybdhn" path="res://LaptopApp.tscn" id="11_w8d4s"]
+[ext_resource type="PackedScene" uid="uid://bagubuh2ppamm" path="res://PauseMenu.tscn" id="12_pu2df"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_n7fyb"]
 radius = 10.0
@@ -189,6 +191,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("10_6y15s")
 
+[node name="ColorRect" type="ColorRect" parent="LaptopLayer/LaptopPanel"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = -593.0
+offset_right = 1121.0
+offset_bottom = 39.0
+color = Color(0.080783345, 0.080783345, 0.080783345, 1)
+
+[node name="LaptopApp" parent="LaptopLayer/LaptopPanel/ColorRect" instance=ExtResource("11_w8d4s")]
+layout_mode = 1
+offset_left = 51.0
+offset_top = 53.0
+offset_right = -49.0
+offset_bottom = -80.0
+
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 
 [node name="CRTShader" type="ColorRect" parent="PostProcessing"]
@@ -198,3 +215,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="PauseMenu" instance=ExtResource("12_pu2df")]

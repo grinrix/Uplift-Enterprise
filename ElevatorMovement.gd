@@ -179,7 +179,7 @@ func _solve_dynamic(current_node, nodes_to_visit, current_sum, path_so_far):
 	for i in range(nodes_to_visit.size()):
 		var next_node = nodes_to_visit[i]
 		var sum_to_next = abs(next_node - current_node)
-		print('dynamic!!!!!!!!!!!!!!')
+		# print('dynamic!!!!!!!!!!!!!!')
 		
 		# tworzymy nową listę do sprawdzenia (bez tej trasy)
 		var remaining_nodes = nodes_to_visit.duplicate()

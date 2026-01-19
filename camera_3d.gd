@@ -1,8 +1,12 @@
 extends Camera3D
+
 @export var max_rotation_degrees: float = 40.0 
 @export var smooth_speed: float = 5.0 
 var interaction_distance = 20.0 
 @onready var generator_node = get_tree().root.find_child("Generator", true, false)
+
+# <<< NOWE: Szukamy laptopa w scenie
+@onready var laptop_ui = get_tree().root.find_child("LaptopPanel", true, false)
 
 # zegar
 @onready var clock = $Clock
@@ -10,15 +14,22 @@ var shift_time_left: float = 270.0
 var shift_active: bool = true
 
 func _process(delta):
-	var viewport_width = get_viewport().get_visible_rect().size.x
-	var mouse_x = get_viewport().get_mouse_position().x
-	var mouse_percent = clamp(mouse_x / viewport_width, 0.0, 1.0)
-	var target_y = lerp(max_rotation_degrees, -max_rotation_degrees, mouse_percent)
-	rotation_degrees.y = lerp(rotation_degrees.y, target_y, delta * smooth_speed)
+	# sprawdza czy laptop jest otwarty
+	var is_using_laptop = (laptop_ui and laptop_ui.is_open)
 	
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		check_hold_interaction(delta)
-	# zegar
+	# wykonuj ruch kamerą TYLKO jeśli laptop jest zamknięty
+	if not is_using_laptop:
+		var viewport_width = get_viewport().get_visible_rect().size.x
+		var mouse_x = get_viewport().get_mouse_position().x
+		var mouse_percent = clamp(mouse_x / viewport_width, 0.0, 1.0)
+		var target_y = lerp(max_rotation_degrees, -max_rotation_degrees, mouse_percent)
+		rotation_degrees.y = lerp(rotation_degrees.y, target_y, delta * smooth_speed)
+		
+		# ładowanie generatora też tylko gdy nie używamy laptopa
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			check_hold_interaction(delta)
+	
+	# zegar aktualizujemy zawsze 
 	if shift_active:
 		shift_time_left -= delta
 		var minutes = floor(shift_time_left / 60)
@@ -26,6 +37,10 @@ func _process(delta):
 		clock.text = "%02d:%02d" % [minutes, seconds]
 
 func _input(event):
+	# jeśli laptop jest otwarty to wszystko ignoruje
+	if laptop_ui and laptop_ui.is_open:
+		return
+
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		#print(">>> KLIKNIĘCIE MYSZKĄ WYKRYTE <<<") # debug
 		check_interaction()

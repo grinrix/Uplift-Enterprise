@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://7k288sjacbay"]
+[gd_scene load_steps=4 format=3 uid="uid://7k288sjacbay"]
 
 [ext_resource type="Script" uid="uid://ms2ke24ih5y0" path="res://MainMenu.gd" id="1_i26rj"]
+[ext_resource type="Shader" uid="uid://ol4bnpvkdj0g" path="res://crt_effect.gdshader" id="2_eiy7p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h7a2f"]
+shader = ExtResource("2_eiy7p")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.5
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(8000, 6000)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 0.10000000149012
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 4.7499999933364734e-08
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -20,9 +45,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -70.0
+offset_left = -120.0
 offset_top = -50.5
-offset_right = 70.0
+offset_right = 120.0
 offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -41,3 +66,14 @@ text = "Simulation Mode"
 layout_mode = 2
 text = "Exit
 "
+
+[node name="PostProcessing" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="CRTShader" type="ColorRect" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_h7a2f")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

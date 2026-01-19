@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://r04bfu67fn3t"]
+[gd_scene load_steps=5 format=3 uid="uid://r04bfu67fn3t"]
 
 [ext_resource type="Script" uid="uid://bboyo8ujf2eq3" path="res://SecurityRoom.gd" id="1_mc320"]
 [ext_resource type="Texture2D" uid="uid://cw8omhvneifim" path="res://Assets/room_bg.png" id="2_l3kad"]
 [ext_resource type="PackedScene" uid="uid://dy8iabomvheh5" path="res://GameMap.tscn" id="3_m0nhq"]
+[ext_resource type="PackedScene" uid="uid://bagubuh2ppamm" path="res://PauseMenu.tscn" id="4_l3kad"]
 
 [node name="SecurityRoom" type="Node2D"]
 script = ExtResource("1_mc320")
@@ -30,3 +31,7 @@ render_target_update_mode = 4
 [node name="GameMap" parent="ElevetorCam/SubViewport" instance=ExtResource("3_m0nhq")]
 position = Vector2(-28.500011, -11.999998)
 scale = Vector2(0.35, 0.35)
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="PauseMenu" instance=ExtResource("4_l3kad")]
