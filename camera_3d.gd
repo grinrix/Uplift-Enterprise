@@ -10,10 +10,11 @@ var interaction_distance = 20.0
 
 # zegar
 @onready var clock = $Clock
-var shift_time_left: float = 270.0 
+var shift_time_left = Global.days_config[Global.current_day]["shift_time"] 
 var shift_active: bool = true
 
 func _process(delta):
+	
 	# sprawdza czy laptop jest otwarty
 	var is_using_laptop = (laptop_ui and laptop_ui.is_open)
 	
@@ -35,7 +36,10 @@ func _process(delta):
 		var minutes = floor(shift_time_left / 60)
 		var seconds = int(shift_time_left) % 60
 		clock.text = "%02d:%02d" % [minutes, seconds]
-
+			
+		if shift_time_left <= 0:
+			Global.end_day_check()	
+	
 func _input(event):
 	# jeśli laptop jest otwarty to wszystko ignoruje
 	if laptop_ui and laptop_ui.is_open:

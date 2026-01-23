@@ -60,15 +60,28 @@ func _process(delta):
 		#print("Winda przyjęła zgłoszenie na piętro: ", floor_idx)
 		#print("Aktualna kolejka: ", target_queue)
 		
-func add_stop(floor_idx: int):
-	# jak już jest na tym piętrze to ignoruje
-	if floor_idx == current_floor and doors_open: return
-	if floor_idx in target_queue: return
-	# piętro jest dodawane na koniec
-	target_queue.append(floor_idx)
-	# tutaj sortuje piętra według trybu
-	recalculate_path()
+func add_stop(floor_number: int):
+	# 1. Jeśli winda już tu jest, stoi w miejscu i ma zamknięte drzwi -> OTWÓRZ NATYCHMIAST
+	if floor_number == current_floor and not is_moving and not doors_open:
+		print("Winda już jest na piętrze ", floor_number, " -> Otwieram drzwi.")
+		# Symulujemy dotarcie na piętro
+		floor_reached.emit(current_floor)
+		doors_open = true
+		return
 
+	# 2. Jeśli winda już tu jest i ma OTWARTE drzwi -> Ignoruj (już obsługuje to piętro)
+	if floor_number == current_floor and doors_open:
+		return
+
+	# 3. Standardowe dodanie do kolejki (jeśli piętro jest inne)
+	if floor_number not in target_queue:
+		target_queue.append(floor_number)
+		target_queue.sort() # Sortowanie (dla trybu heurystycznego)
+		
+		# Jeśli jesteśmy w trybie dynamicznym, przelicz trasę
+		if current_mode == AlgorithmMode.DYNAMIC:
+			recalculate_path()
+			
 func recalculate_path():
 	if target_queue.is_empty(): return
 	match current_mode:
