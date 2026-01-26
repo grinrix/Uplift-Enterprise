@@ -1,0 +1,337 @@
+[gd_scene load_steps=42 format=3 uid="uid://by76euls5jola"]
+
+[ext_resource type="Texture2D" uid="uid://c3euwjd235kpj" path="res://Assets/panoramatest.png" id="1_rdvea"]
+[ext_resource type="Script" uid="uid://dwgeok080ac1f" path="res://Maps/SecurityRoom3D.gd" id="1_vapsd"]
+[ext_resource type="Script" uid="uid://b3y6jeroujw0n" path="res://Camera/camera_3d.gd" id="2_rdvea"]
+[ext_resource type="PackedScene" uid="uid://dy8iabomvheh5" path="res://Maps/GameMap.tscn" id="3_rdvea"]
+[ext_resource type="Texture2D" uid="uid://cuuyhoakgh2lk" path="res://icon.svg" id="3_vapsd"]
+[ext_resource type="Script" uid="uid://dedggtb5sw5ga" path="res://MinigamesSystem/InteractiveMonitorMinigames.gd" id="5_0ek2n"]
+[ext_resource type="Texture2D" uid="uid://i42erp10bmx6" path="res://Assets/PassengerIdle.png" id="5_vapsd"]
+[ext_resource type="PackedScene" uid="uid://csqtiun7r24b2" path="res://Entities/generator.tscn" id="6_240jw"]
+[ext_resource type="Texture2D" uid="uid://cx1liw5302v16" path="res://Assets/Monitor1button.webp" id="6_lhflu"]
+[ext_resource type="Script" uid="uid://d2s2pmia7wp8y" path="res://Camera/tabletDetect.gd" id="7_2rluf"]
+[ext_resource type="PackedScene" uid="uid://yopusshe38f5" path="res://MinigamesSystem/MinigameManager.tscn" id="8_0ek2n"]
+[ext_resource type="Texture2D" uid="uid://una4ewp3cc1u" path="res://Assets/88206.png" id="8_axyi5"]
+[ext_resource type="Script" uid="uid://dcpi3lwmepkqb" path="res://Laptop/LaptopPanel.gd" id="10_6y15s"]
+[ext_resource type="Shader" uid="uid://ol4bnpvkdj0g" path="res://Shaders/crt_effect.gdshader" id="11_68c40"]
+[ext_resource type="PackedScene" uid="uid://48nhysgybdhn" path="res://Laptop/LaptopApp.tscn" id="11_w8d4s"]
+[ext_resource type="PackedScene" uid="uid://bagubuh2ppamm" path="res://UI/PauseMenu.tscn" id="12_pu2df"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_n7fyb"]
+radius = 10.0
+height = 20.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v12i8"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_rdvea")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_240jw"]
+viewport_path = NodePath("Hardware/GeneratorViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6y15s"]
+viewport_path = NodePath("Hardware/SwitchViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vapsd"]
+size = Vector3(0.7635498, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_68c40"]
+
+[sub_resource type="SystemFont" id="SystemFont_l3kad"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p4yuy"]
+font = SubResource("SystemFont_l3kad")
+font_size = 21
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhflu"]
+size = Vector2(600, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbxtv"]
+atlas = ExtResource("8_axyi5")
+region = Rect2(0, 0, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqf7x"]
+atlas = ExtResource("8_axyi5")
+region = Rect2(1282, 0, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmhkx"]
+atlas = ExtResource("8_axyi5")
+region = Rect2(2564, 0, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwr43"]
+atlas = ExtResource("8_axyi5")
+region = Rect2(3846, 0, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s041"]
+atlas = ExtResource("8_axyi5")
+region = Rect2(0, 722, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqqkr"]
+atlas = ExtResource("8_axyi5")
+region = Rect2(1282, 722, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwcet"]
+atlas = ExtResource("8_axyi5")
+region = Rect2(2564, 722, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urkkx"]
+atlas = ExtResource("8_axyi5")
+region = Rect2(3846, 722, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpr5j"]
+atlas = ExtResource("8_axyi5")
+region = Rect2(0, 1444, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7d7h"]
+atlas = ExtResource("8_axyi5")
+region = Rect2(1282, 1444, 1282, 722)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kn0bn"]
+atlas = ExtResource("8_axyi5")
+region = Rect2(2564, 1444, 1282, 722)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5tp30"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbxtv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqf7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmhkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwr43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s041")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqqkr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwcet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urkkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpr5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7d7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kn0bn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vapsd"]
+viewport_path = NodePath("Hardware/MinigamesViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6y15s"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p4yuy"]
+viewport_path = NodePath("Hardware/GameViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pu2df"]
+shader = ExtResource("11_68c40")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.5
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(8000, 6000)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 0.10000000149012
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 4.7499999933364734e-08
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[node name="SecurityRoom3D" type="Node3D"]
+script = ExtResource("1_vapsd")
+
+[node name="RoomSphere" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_n7fyb")
+surface_material_override/0 = SubResource("StandardMaterial3D_v12i8")
+
+[node name="GeneratorSprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.88232917, 0, -0.53191185, 0, 1.1708915, 0, 0.24126205, 0, 1.9452763, 6.284572, 0.28474474, -6.419503)
+alpha_cut = 1
+texture = SubResource("ViewportTexture_240jw")
+
+[node name="SwitchMode" type="Sprite3D" parent="."]
+transform = Transform3D(0.99361724, 0, 0.112804376, 0, 1, 0, -0.112804376, 0, 0.99361724, -4.6515074, 1.2158873, -7.46021)
+alpha_cut = 1
+texture = SubResource("ViewportTexture_6y15s")
+
+[node name="SwitchArea" type="Area3D" parent="SwitchMode"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SwitchMode/SwitchArea"]
+transform = Transform3D(2.7999816, 0, -4.4703484e-08, 0, 0.6798248, 0, 5.9604645e-08, 0, 0.62459415, -0.4579308, 0.14642704, -0.7285571)
+shape = SubResource("BoxShape3D_vapsd")
+debug_color = Color(0.96514004, 0, 0.48558438, 1)
+
+[node name="ChargeButton" type="Sprite3D" parent="."]
+transform = Transform3D(0.97553456, 0, -0.2198462, 0, 1, 0, 0.2198462, 0, 0.97553456, 6.71142, 0.009584188, -6.187155)
+alpha_cut = 1
+texture = ExtResource("3_vapsd")
+
+[node name="ChargeArea" type="Area3D" parent="ChargeButton"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChargeButton/ChargeArea"]
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 0.01, 0, 0, 0)
+shape = SubResource("BoxShape3D_68c40")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.3526326, 0, -2.6777575, 0, 3, 0, 2.6777575, 0, 1.3526326, 5.1403117, -0.58400524, -6.4841614)
+alpha_cut = 1
+texture = ExtResource("5_vapsd")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("2_rdvea")
+
+[node name="Clock" type="Label" parent="Camera3D"]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_p4yuy")
+
+[node name="Tablet Arrow" type="TextureRect" parent="Camera3D"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 20.0
+offset_right = 300.0
+offset_bottom = 80.0
+grow_horizontal = 2
+texture = ExtResource("6_lhflu")
+
+[node name="TabletDetect" type="Area2D" parent="Camera3D"]
+position = Vector2(340, 20)
+script = ExtResource("7_2rluf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera3D/TabletDetect"]
+position = Vector2(300, 18.5)
+shape = SubResource("RectangleShape2D_lhflu")
+
+[node name="panel" type="AnimatedSprite2D" parent="Camera3D"]
+position = Vector2(639, 366)
+sprite_frames = SubResource("SpriteFrames_5tp30")
+frame_progress = 0.7032504
+
+[node name="MonitorScreen2" type="Sprite3D" parent="."]
+transform = Transform3D(0.30641776, 0, 0.20312089, 0, 0.39499998, 0, -0.257115, 0, 0.24207005, -5.783754, -1.0345541, -7.6905575)
+transparent = false
+texture = SubResource("ViewportTexture_vapsd")
+script = ExtResource("5_0ek2n")
+
+[node name="MonitorInteractive" type="Area3D" parent="MonitorScreen2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MonitorScreen2/MonitorInteractive"]
+transform = Transform3D(6.4, 0, 0, 0, 4.8, 0, 0, 0, 0.01, 0, 0, 0)
+shape = SubResource("BoxShape3D_6y15s")
+
+[node name="MonitorScreen" type="Sprite3D" parent="."]
+transform = Transform3D(0.55, 0, 0, 0, 0.72, 0, 0, 0, 0.5, 1.558, -0.48, -11.401)
+transparent = false
+texture = SubResource("ViewportTexture_p4yuy")
+
+[node name="Hardware" type="Node" parent="."]
+
+[node name="GameViewport" type="SubViewport" parent="Hardware"]
+size = Vector2i(1280, 720)
+
+[node name="GameMap" parent="Hardware/GameViewport" instance=ExtResource("3_rdvea")]
+
+[node name="GeneratorViewport" type="SubViewport" parent="Hardware"]
+size = Vector2i(130, 350)
+render_target_update_mode = 4
+
+[node name="Generator" parent="Hardware/GeneratorViewport" instance=ExtResource("6_240jw")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="MinigamesViewport" type="SubViewport" parent="Hardware"]
+size = Vector2i(640, 480)
+render_target_update_mode = 4
+
+[node name="MinigameManager" parent="Hardware/MinigamesViewport" instance=ExtResource("8_0ek2n")]
+
+[node name="SwitchViewport" type="SubViewport" parent="Hardware"]
+size = Vector2i(206, 46)
+render_target_update_mode = 4
+
+[node name="StatusBackground" type="ColorRect" parent="Hardware/SwitchViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModeSwitch" type="CheckButton" parent="Hardware/SwitchViewport"]
+offset_right = 168.0
+offset_bottom = 31.0
+text = "Mode: Dynamic"
+
+[node name="LaptopLayer" type="CanvasLayer" parent="."]
+
+[node name="LaptopPanel" type="Control" parent="LaptopLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_6y15s")
+
+[node name="ColorRect" type="ColorRect" parent="LaptopLayer/LaptopPanel"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = -593.0
+offset_right = 1121.0
+offset_bottom = 39.0
+color = Color(0.080783345, 0.080783345, 0.080783345, 1)
+
+[node name="LaptopApp" parent="LaptopLayer/LaptopPanel/ColorRect" instance=ExtResource("11_w8d4s")]
+layout_mode = 1
+offset_left = 51.0
+offset_top = 53.0
+offset_right = -49.0
+offset_bottom = -80.0
+
+[node name="PostProcessing" type="CanvasLayer" parent="."]
+
+[node name="CRTShader" type="ColorRect" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_pu2df")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="PauseMenu" instance=ExtResource("12_pu2df")]

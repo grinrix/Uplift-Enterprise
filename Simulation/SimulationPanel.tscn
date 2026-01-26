@@ -1,0 +1,146 @@
+[gd_scene load_steps=2 format=3 uid="uid://3o4pil3a1eq6"]
+
+[ext_resource type="Script" uid="uid://6tl2defs168o" path="res://Simulation/SimulationPanel.gd" id="1_fmusb"]
+
+[node name="SimulationPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fmusb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "SETTINGS:"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="Spin0" type="SpinBox" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/buttons_vertical_separation = 6
+theme_override_constants/field_and_buttons_separation = -6
+theme_override_constants/buttons_width = 21
+theme_override_constants/set_min_buttons_width_from_icons = 11
+max_value = 20.0
+
+[node name="Label0" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Floor 0"
+
+[node name="Spin1" type="SpinBox" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/field_and_buttons_separation = -6
+max_value = 20.0
+
+[node name="Label1" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Floor 1"
+
+[node name="Spin2" type="SpinBox" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/field_and_buttons_separation = -6
+max_value = 20.0
+update_on_text_changed = true
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Floor 2"
+
+[node name="Spin3" type="SpinBox" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/field_and_buttons_separation = -6
+max_value = 20.0
+
+[node name="Label3" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Floor 3"
+
+[node name="Spin4" type="SpinBox" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/field_and_buttons_separation = -6
+max_value = 20.0
+
+[node name="Label4" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Floor 4"
+
+[node name="Spin5" type="SpinBox" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/field_and_buttons_separation = -6
+max_value = 20.0
+
+[node name="Label5" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Floor 5"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonReset" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "RESET"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "ADD PASSENGER:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "From:"
+
+[node name="FromSpin" type="SpinBox" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+max_value = 5.0
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "To:"
+
+[node name="ToSpin" type="SpinBox" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+max_value = 5.0
+
+[node name="ButtonSpawn" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "SPAWN"
