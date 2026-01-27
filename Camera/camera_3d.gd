@@ -5,6 +5,7 @@ extends Camera3D
 var interaction_distance = 20.0 
 @onready var generator_node = get_tree().root.find_child("Generator", true, false)
 @onready var laptop_ui = get_tree().root.find_child("LaptopPanel", true, false)
+var is_locked: bool = false
 
 # zegar
 @onready var clock = $Clock
@@ -13,11 +14,8 @@ var shift_active: bool = true
 
 func _process(delta):
 	
-	# sprawdza czy laptop jest otwarty
-	var is_using_laptop = (laptop_ui and laptop_ui.is_open)
-	
 	# wykonuj ruch kamerą TYLKO jeśli laptop jest zamknięty
-	if not is_using_laptop:
+	if not is_locked:
 		var viewport_width = get_viewport().get_visible_rect().size.x
 		var mouse_x = get_viewport().get_mouse_position().x
 		var mouse_percent = clamp(mouse_x / viewport_width, 0.0, 1.0)
@@ -50,7 +48,7 @@ func _process(delta):
 	
 func _input(event):
 	# jeśli laptop jest otwarty to wszystko ignoruje
-	if laptop_ui and laptop_ui.is_open:
+	if is_locked:
 		return
 
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:

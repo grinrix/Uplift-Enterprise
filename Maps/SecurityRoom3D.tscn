@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://by76euls5jola"]
+[gd_scene load_steps=41 format=3 uid="uid://by76euls5jola"]
 
 [ext_resource type="Texture2D" uid="uid://c3euwjd235kpj" path="res://Assets/panoramatest.png" id="1_rdvea"]
 [ext_resource type="Script" uid="uid://dwgeok080ac1f" path="res://Maps/SecurityRoom3D.gd" id="1_vapsd"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://d2s2pmia7wp8y" path="res://Camera/tabletDetect.gd" id="7_2rluf"]
 [ext_resource type="PackedScene" uid="uid://yopusshe38f5" path="res://MinigamesSystem/MinigameManager.tscn" id="8_0ek2n"]
 [ext_resource type="Texture2D" uid="uid://una4ewp3cc1u" path="res://Assets/88206.png" id="8_axyi5"]
-[ext_resource type="Script" uid="uid://dcpi3lwmepkqb" path="res://Laptop/LaptopPanel.gd" id="10_6y15s"]
 [ext_resource type="Shader" uid="uid://ol4bnpvkdj0g" path="res://Shaders/crt_effect.gdshader" id="11_68c40"]
 [ext_resource type="PackedScene" uid="uid://48nhysgybdhn" path="res://Laptop/LaptopApp.tscn" id="11_w8d4s"]
 [ext_resource type="PackedScene" uid="uid://bagubuh2ppamm" path="res://UI/PauseMenu.tscn" id="12_pu2df"]
@@ -129,7 +128,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kn0bn")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 30.0
 }]
@@ -296,6 +295,7 @@ offset_bottom = 31.0
 text = "Mode: Dynamic"
 
 [node name="LaptopLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="LaptopPanel" type="Control" parent="LaptopLayer"]
 layout_mode = 3
@@ -304,7 +304,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("10_6y15s")
 
 [node name="ColorRect" type="ColorRect" parent="LaptopLayer/LaptopPanel"]
 layout_mode = 0
