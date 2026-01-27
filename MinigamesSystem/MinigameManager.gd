@@ -5,7 +5,8 @@ signal minigame_ended(success: bool)
 
 # lista minigier
 var minigames_list = [
-	"res://MinigamesSystem/Minigames/CalibrationGame.tscn" 
+	"res://MinigamesSystem/Minigames/CalibrationGame.tscn", 
+	"res://MinigamesSystem/Minigames/SnakeGame.tscn" 
 ]
 
 @onready var spawn_timer = $SpawnTimer

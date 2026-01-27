@@ -8,7 +8,7 @@ var interaction_distance = 20.0
 var is_locked: bool = false
 
 # zegar
-@onready var clock = $Clock
+@onready var clock = $Clockv2
 var shift_time_left = Global.days_config[Global.current_day]["shift_time"] 
 var shift_active: bool = true
 

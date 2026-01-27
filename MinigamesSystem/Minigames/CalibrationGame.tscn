@@ -4,9 +4,10 @@
 
 [node name="CalibrationGame" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.777
+anchor_bottom = 0.74200004
+offset_right = 0.44000244
+offset_bottom = -0.24005127
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6unkc")
@@ -24,14 +25,11 @@ color = Color(0.4949128, 1, 0.9266737, 1)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -27.0
-offset_right = 2.0
+offset_top = -80.0
 grow_horizontal = 2
 grow_vertical = 0
 

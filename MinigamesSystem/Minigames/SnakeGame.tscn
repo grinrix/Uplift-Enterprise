@@ -1,0 +1,102 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyc756atejq4t"]
+
+[ext_resource type="Script" uid="uid://clwq3idfvvur" path="res://MinigamesSystem/Minigames/SnakeGame.gd" id="1_r6aix"]
+[ext_resource type="PackedScene" uid="uid://clx0am5p2jc4x" path="res://MinigamesSystem/Minigames/snake.tscn" id="2_mt0pe"]
+[ext_resource type="Texture2D" uid="uid://btg8hk01h5y6e" path="res://Assets/snake-bg.png" id="3_mt0pe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6aix"]
+bg_color = Color(0, 0.699087, 0.58899826, 1)
+
+[node name="SnakeGame" type="Control"]
+layout_mode = 3
+anchor_right = 0.88900006
+anchor_bottom = 1.0
+offset_right = -142.92004
+offset_bottom = -186.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r6aix")
+snake_scene = ExtResource("2_mt0pe")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(0, 84)
+texture = ExtResource("3_mt0pe")
+centered = false
+
+[node name="Food" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.77572405, 0.36197928, 7.70092e-07, 1)
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 84.0
+grow_horizontal = 2
+
+[node name="ScorePanel" type="Panel" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r6aix")
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.5
+offset_top = 3.0
+offset_right = 131.5
+offset_bottom = 59.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "SCORE: 0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Controls" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ButtonUp" type="Button" parent="Controls"]
+layout_mode = 0
+offset_left = 853.0
+offset_top = 100.0
+offset_right = 910.0
+offset_bottom = 162.0
+text = "^"
+
+[node name="ButtonDown" type="Button" parent="Controls"]
+layout_mode = 0
+offset_left = 853.0
+offset_top = 170.0
+offset_right = 910.0
+offset_bottom = 232.0
+text = "v"
+
+[node name="ButtonLeft" type="Button" parent="Controls"]
+layout_mode = 0
+offset_left = 788.0
+offset_top = 148.0
+offset_right = 845.0
+offset_bottom = 210.0
+text = "<"
+
+[node name="ButtonRight" type="Button" parent="Controls"]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 148.0
+offset_right = 977.0
+offset_bottom = 210.0
+text = ">"

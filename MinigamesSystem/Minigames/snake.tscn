@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://clx0am5p2jc4x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqmeh"]
+bg_color = Color(1, 0.34577772, 0.25310376, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Snake" type="Panel"]
+offset_right = 56.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uqmeh")

@@ -251,6 +251,11 @@ offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Clockv2" type="Label" parent="Camera3D"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "00:00"
+
 [node name="MonitorScreen2" type="Sprite3D" parent="."]
 transform = Transform3D(0.30641776, 0, 0.20312089, 0, 0.39499998, 0, -0.257115, 0, 0.24207005, -5.783754, -1.0345541, -7.6905575)
 transparent = false
