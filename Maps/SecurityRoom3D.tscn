@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://by76euls5jola"]
+[gd_scene load_steps=40 format=3 uid="uid://by76euls5jola"]
 
 [ext_resource type="Texture2D" uid="uid://c3euwjd235kpj" path="res://Assets/panoramatest.png" id="1_rdvea"]
 [ext_resource type="Script" uid="uid://dwgeok080ac1f" path="res://Maps/SecurityRoom3D.gd" id="1_vapsd"]
@@ -12,10 +12,10 @@
 [ext_resource type="Script" uid="uid://d2s2pmia7wp8y" path="res://Camera/tabletDetect.gd" id="7_2rluf"]
 [ext_resource type="PackedScene" uid="uid://yopusshe38f5" path="res://MinigamesSystem/MinigameManager.tscn" id="8_0ek2n"]
 [ext_resource type="Texture2D" uid="uid://una4ewp3cc1u" path="res://Assets/88206.png" id="8_axyi5"]
-[ext_resource type="Script" uid="uid://dcpi3lwmepkqb" path="res://Laptop/LaptopPanel.gd" id="10_6y15s"]
 [ext_resource type="Shader" uid="uid://ol4bnpvkdj0g" path="res://Shaders/crt_effect.gdshader" id="11_68c40"]
 [ext_resource type="PackedScene" uid="uid://48nhysgybdhn" path="res://Laptop/LaptopApp.tscn" id="11_w8d4s"]
 [ext_resource type="PackedScene" uid="uid://bagubuh2ppamm" path="res://UI/PauseMenu.tscn" id="12_pu2df"]
+[ext_resource type="Script" uid="uid://d2jd7mwnwbui5" path="res://Globals/GameManager.gd" id="16_axyi5"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_n7fyb"]
 radius = 10.0
@@ -38,16 +38,6 @@ viewport_path = NodePath("Hardware/SwitchViewport")
 size = Vector3(0.7635498, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_68c40"]
-
-[sub_resource type="SystemFont" id="SystemFont_l3kad"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_p4yuy"]
-font = SubResource("SystemFont_l3kad")
-font_size = 21
-shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhflu"]
-size = Vector2(600, 81)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbxtv"]
 atlas = ExtResource("8_axyi5")
@@ -129,10 +119,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kn0bn")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 30.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhflu"]
+size = Vector2(600, 81)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_vapsd"]
 viewport_path = NodePath("Hardware/MinigamesViewport")
@@ -209,10 +202,21 @@ texture = ExtResource("5_vapsd")
 [node name="Camera3D" type="Camera3D" parent="."]
 script = ExtResource("2_rdvea")
 
-[node name="Clock" type="Label" parent="Camera3D"]
-offset_right = 40.0
-offset_bottom = 23.0
-label_settings = SubResource("LabelSettings_p4yuy")
+[node name="panel" type="AnimatedSprite2D" parent="Camera3D"]
+position = Vector2(644, 433.00003)
+scale = Vector2(0.7936288, 0.7936288)
+sprite_frames = SubResource("SpriteFrames_5tp30")
+frame = 10
+frame_progress = 1.0
+
+[node name="TabletApp" parent="Camera3D" instance=ExtResource("11_w8d4s")]
+anchors_preset = 12
+anchor_top = 1.0
+offset_left = 152.0
+offset_top = -552.0
+offset_right = -138.0
+offset_bottom = -28.0
+grow_vertical = 0
 
 [node name="Tablet Arrow" type="TextureRect" parent="Camera3D"]
 anchors_preset = 5
@@ -223,6 +227,7 @@ offset_top = 20.0
 offset_right = 300.0
 offset_bottom = 80.0
 grow_horizontal = 2
+mouse_filter = 2
 texture = ExtResource("6_lhflu")
 
 [node name="TabletDetect" type="Area2D" parent="Camera3D"]
@@ -233,10 +238,12 @@ script = ExtResource("7_2rluf")
 position = Vector2(300, 18.5)
 shape = SubResource("RectangleShape2D_lhflu")
 
-[node name="panel" type="AnimatedSprite2D" parent="Camera3D"]
-position = Vector2(639, 366)
-sprite_frames = SubResource("SpriteFrames_5tp30")
-frame_progress = 0.7032504
+[node name="Clock2" type="Label" parent="Camera3D"]
+offset_right = 336.0
+offset_bottom = 69.0
+theme_override_constants/outline_size = 27
+theme_override_font_sizes/font_size = 30
+text = "00:00"
 
 [node name="MonitorScreen2" type="Sprite3D" parent="."]
 transform = Transform3D(0.30641776, 0, 0.20312089, 0, 0.39499998, 0, -0.257115, 0, 0.24207005, -5.783754, -1.0345541, -7.6905575)
@@ -295,32 +302,6 @@ offset_right = 168.0
 offset_bottom = 31.0
 text = "Mode: Dynamic"
 
-[node name="LaptopLayer" type="CanvasLayer" parent="."]
-
-[node name="LaptopPanel" type="Control" parent="LaptopLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("10_6y15s")
-
-[node name="ColorRect" type="ColorRect" parent="LaptopLayer/LaptopPanel"]
-layout_mode = 0
-offset_left = 170.0
-offset_top = -593.0
-offset_right = 1121.0
-offset_bottom = 39.0
-color = Color(0.080783345, 0.080783345, 0.080783345, 1)
-
-[node name="LaptopApp" parent="LaptopLayer/LaptopPanel/ColorRect" instance=ExtResource("11_w8d4s")]
-layout_mode = 1
-offset_left = 51.0
-offset_top = 53.0
-offset_right = -49.0
-offset_bottom = -80.0
-
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 
 [node name="CRTShader" type="ColorRect" parent="PostProcessing"]
@@ -335,3 +316,6 @@ mouse_filter = 2
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="PauseMenu" instance=ExtResource("12_pu2df")]
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("16_axyi5")
