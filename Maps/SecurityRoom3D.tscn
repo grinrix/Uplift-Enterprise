@@ -335,7 +335,6 @@ offset_right = -49.0
 offset_bottom = -80.0
 
 [node name="PostProcessing" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="CRTShader" type="ColorRect" parent="PostProcessing"]
 material = SubResource("ShaderMaterial_pu2df")
@@ -347,6 +346,5 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="PauseMenu" parent="PauseMenu" instance=ExtResource("12_pu2df")]

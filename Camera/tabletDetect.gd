@@ -1,8 +1,8 @@
 extends Area2D
 
-@onready var anim = $"../panel"       # Animacja
-@onready var app_ui = $"../MinigameManager" # Ekran
-@onready var camera = get_parent()    # POBIERAMY KAMERĘ (RODZICA)
+@onready var anim = $"../panel"
+@onready var app_ui = $"../MinigameManager"
+@onready var camera = get_parent()
 
 var is_open = false
 
@@ -23,16 +23,17 @@ func toggle_laptop():
 
 	if is_open:
 		is_open = false
+		app_ui.visible = false 
 		anim.play_backwards("default")
+		
 		if camera:
 			camera.is_locked = false
-			await get_tree().create_timer(0.3).timeout
-			anim.visible = false
 		
 	else:
 		is_open = true
 		anim.visible = true
 		anim.play("default")
+		
 		if camera:
 			await get_tree().create_timer(0.5).timeout
 			camera.is_locked = true
@@ -40,6 +41,7 @@ func toggle_laptop():
 func on_anim_done():
 	if is_open:
 		await get_tree().create_timer(0.2).timeout
-		app_ui.visible = true
+		if is_open: 
+			app_ui.visible = true
 	else:
 		anim.visible = false
