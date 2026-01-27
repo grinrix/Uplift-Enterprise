@@ -1,5 +1,6 @@
 extends Node
 var score: int = 0
+var mistakes: int = 0
 var current_day: int = 1
 var is_game_over: bool = false
 var game_over_reason: String = ""
@@ -8,8 +9,7 @@ var is_simulation: bool = false
 var statusPassangersCount: int = 0
 var statusTotalWaitTime: float = 0
 var statusMaxWaitTime: float = 0
-var strikes: int = 0
-const MAX_STRIKES = 3
+
 
 
 # KONFIGURACJA DNI:
@@ -55,7 +55,7 @@ func _ready():
 
 func reset_stats():
 	score = 0
-	strikes = 0
+	mistakes = 0
 	is_game_over = false
 	game_over_reason = ""
 	print("[GLOBAL] Statystyki zresetowane na nowy dzień.")
@@ -63,6 +63,10 @@ func reset_stats():
 func add_score(amount: int):
 	score += amount
 
+func add_mistake(reason: String):
+	mistakes += 1
+	if mistakes >= 3:
+		game_over("Zbyt wiele błędów (3/3)!")
 
 func game_over(reason: String):
 	print("GAME OVER: ", reason)
@@ -89,7 +93,7 @@ func get_grade() -> String:
 	var target = day_settings["target_score"]
 	
 	# ocenianie
-	if strikes >= 3: return "F" # JEDZIESZ DO BYDGOSZCZY
+	if mistakes >= 3: return "F" # JEDZIESZ DO BYDGOSZCZY
 	
 	if score >= target * 1.5: return "S" # SUPER!!!
 	if score >= target * 1.2: return "A" # DOBRZE
