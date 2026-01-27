@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 signal minigame_started
 signal minigame_ended(success: bool)
@@ -33,9 +33,8 @@ func spawn_random_minigame():
 	add_child(current_minigame_node)
 	
 	if current_minigame_node is Control:
-		var viewport_size = get_viewport_rect().size
-		current_minigame_node.size = viewport_size
-		current_minigame_node.position = Vector2(0, 0)
+		current_minigame_node.set_anchors_preset(Control.PRESET_TOP_LEFT)
+		current_minigame_node.size = Vector2(995, 534)
 	
 	if current_minigame_node.has_signal("finished"):
 		current_minigame_node.finished.connect(_on_minigame_finished)

@@ -1,6 +1,6 @@
 extends Camera3D
 
-@export var max_rotation_degrees: float = 140.0 
+@export var max_rotation_degrees: float = 40.0 
 @export var smooth_speed: float = 5.0 
 var interaction_distance = 20.0 
 @onready var generator_node = get_tree().root.find_child("Generator", true, false)
