@@ -3,13 +3,17 @@ extends Camera3D
 @export var max_rotation_degrees: float = 40.0 
 @export var smooth_speed: float = 5.0 
 var interaction_distance = 20.0 
+var sim_viewport: SubViewport
 
+func _ready():
+	await get_tree().process_frame
+	sim_viewport = get_tree().root.find_child("SimulationViewport", true, false)
 
 func _process(delta):
 		var viewport_width = get_viewport().get_visible_rect().size.x
 		var mouse_x = get_viewport().get_mouse_position().x
 		
-		# obliczamy pozycję myszki jako procent ekranu (0.0 do 1.0)
+		# obliczamy pozycję myszki jako procent ekranu (0 do 1)
 		var mouse_percent = clamp(mouse_x / viewport_width, 0.0, 1.0)
 		
 		# mapujemy to na kąt obrotu (od +40 do -40)
@@ -22,6 +26,8 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		check_interaction()
+	if event is InputEventKey and sim_viewport:
+		sim_viewport.push_input(event)
 
 func check_interaction():
 	var space_state = get_world_3d().direct_space_state

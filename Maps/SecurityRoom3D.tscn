@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://c3euwjd235kpj" path="res://Assets/panoramatest.png" id="1_rdvea"]
 [ext_resource type="Script" uid="uid://dwgeok080ac1f" path="res://Maps/SecurityRoom3D.gd" id="1_vapsd"]
 [ext_resource type="Script" uid="uid://b3y6jeroujw0n" path="res://Camera/camera_3d.gd" id="2_rdvea"]
+[ext_resource type="Texture2D" uid="uid://bqmn4lelivp23" path="res://UI/icon.svg" id="3_axyi5"]
 [ext_resource type="PackedScene" uid="uid://dy8iabomvheh5" path="res://Maps/GameMap.tscn" id="3_rdvea"]
-[ext_resource type="Texture2D" uid="uid://cuuyhoakgh2lk" path="res://icon.svg" id="3_vapsd"]
 [ext_resource type="Script" uid="uid://dedggtb5sw5ga" path="res://MinigamesSystem/InteractiveMonitorMinigames.gd" id="5_0ek2n"]
 [ext_resource type="Texture2D" uid="uid://i42erp10bmx6" path="res://Assets/PassengerIdle.png" id="5_vapsd"]
 [ext_resource type="PackedScene" uid="uid://csqtiun7r24b2" path="res://Entities/generator.tscn" id="6_240jw"]
@@ -169,6 +169,17 @@ shader_parameter/vignette_opacity = 0.5
 [node name="SecurityRoom3D" type="Node3D"]
 script = ExtResource("1_vapsd")
 
+[node name="Label" type="Label" parent="."]
+offset_left = -135.0
+offset_top = 17.0
+offset_right = 1442.0
+offset_bottom = 212.0
+theme_override_font_sizes/font_size = 24
+text = "GRA JEST W BARDZO WCZĘSNEJ FAZIE BETY, ZAPRASZAMY DO \"Simulation Mode\"
+ (znajdzie się w menu głównym lub po kliknieciu w ESC)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="RoomSphere" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_n7fyb")
 surface_material_override/0 = SubResource("StandardMaterial3D_v12i8")
@@ -193,7 +204,7 @@ debug_color = Color(0.96514004, 0, 0.48558438, 1)
 [node name="ChargeButton" type="Sprite3D" parent="."]
 transform = Transform3D(0.97553456, 0, -0.2198462, 0, 1, 0, 0.2198462, 0, 0.97553456, 6.71142, 0.009584188, -6.187155)
 alpha_cut = 1
-texture = ExtResource("3_vapsd")
+texture = ExtResource("3_axyi5")
 
 [node name="ChargeArea" type="Area3D" parent="ChargeButton"]
 

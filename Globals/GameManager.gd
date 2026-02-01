@@ -202,9 +202,14 @@ func clear_all_passengers():
 
 # ręczne dodanie pasażera
 func force_spawn_passenger(from_floor: int, to_floor: int):
-	# jeśli wybrano -1 (losowe) wylosuj
+	# -1 losowe
+	if from_floor == -1:
+		from_floor = randi() % 6
+	
+	# jak jest -1 to losowe
 	if to_floor == -1:
 		to_floor = randi() % 6
+		# aby nie jechał na to samo piętro
 		while to_floor == from_floor:
 			to_floor = randi() % 6
 			
@@ -215,10 +220,14 @@ func force_spawn_passenger(from_floor: int, to_floor: int):
 	new_passenger.setup_passenger(from_floor, to_floor)
 	
 	var spawn_y = base_y - (from_floor * floor_height)
-	var shaft_x = get_parent().get_node("ElevatorShaft").position.x
+	var shaft_node = get_parent().get_node_or_null("ElevatorShaft")
+	var shaft_x = 1077
+	if shaft_node:
+		shaft_x = shaft_node.position.x
+		
 	var waiting_spot_x = shaft_x - 60 - (randi() % 60)
 	
-	new_passenger.position = Vector2(-50.0, spawn_y)
+	new_passenger.position = Vector2(-50, spawn_y)
 	new_passenger.walk_to(waiting_spot_x)
 	new_passenger.button_pressed.connect(_on_passenger_button_pressed)
 

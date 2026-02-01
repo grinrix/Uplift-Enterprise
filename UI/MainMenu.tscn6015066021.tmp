@@ -1,14 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://7k288sjacbay"]
+[gd_scene load_steps=17 format=3 uid="uid://7k288sjacbay"]
 
 [ext_resource type="Script" uid="uid://ms2ke24ih5y0" path="res://UI/MainMenu.gd" id="1_i26rj"]
 [ext_resource type="Shader" uid="uid://ol4bnpvkdj0g" path="res://Shaders/crt_effect.gdshader" id="2_eiy7p"]
 [ext_resource type="Texture2D" uid="uid://i42erp10bmx6" path="res://Assets/PassengerIdle.png" id="3_t6syg"]
 [ext_resource type="Texture2D" uid="uid://b4v1rh2of6igg" path="res://Assets/PassengerWalking.png" id="4_y6s48"]
-[ext_resource type="Script" uid="uid://364ohwyufbmx" path="res://UI/mainmenupassenger.gd" id="5_obtq6"]
 [ext_resource type="Script" uid="uid://vl5g2g211nxn" path="res://UI/parallax_background.gd" id="5_otjfi"]
 [ext_resource type="Texture2D" uid="uid://brrxr1omp6lpf" path="res://Assets/mainmenubackground.png" id="5_y6s48"]
-[ext_resource type="Texture2D" uid="uid://trrxcnbypnjw" path="res://Assets/gradientmainmenu.png" id="6_t4ff4"]
-[ext_resource type="Texture2D" uid="uid://clk2fqhwmequl" path="res://Assets/title.png" id="9_w5vcv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h7a2f"]
 shader = ExtResource("2_eiy7p")
@@ -115,53 +112,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i26rj")
 
-[node name="PostProcessing" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="CRTShader" type="ColorRect" parent="PostProcessing"]
-material = SubResource("ShaderMaterial_h7a2f")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Passenger" type="AnimatedSprite2D" parent="."]
-position = Vector2(840, 378.00003)
-scale = Vector2(6.6249995, 6.625)
-sprite_frames = SubResource("SpriteFrames_otjfi")
-animation = &"walking"
-autoplay = "walking"
-frame_progress = 0.68077177
-script = ExtResource("5_obtq6")
-
-[node name="gradient" type="Sprite2D" parent="."]
-scale = Vector2(1.4330357, 1.4166666)
-texture = ExtResource("6_t4ff4")
-centered = false
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("5_otjfi")
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1484.782, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(1497, 355.99997)
-scale = Vector2(7.0495076, 7.0495057)
-texture = ExtResource("5_y6s48")
-
 [node name="Przyciski" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.065000005
-anchor_top = 0.49
-anchor_right = 0.27400002
-anchor_bottom = 0.63100004
-offset_left = -0.20000458
-offset_top = 0.19998169
-offset_right = 0.27996826
-offset_bottom = -0.32003784
+anchor_left = 0.07300001
+anchor_top = 0.43
+anchor_right = 0.19100001
+anchor_bottom = 0.57000005
+offset_left = 0.5599899
+offset_top = -0.1000061
+offset_right = -0.480011
+offset_bottom = 0.099975586
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -179,20 +140,32 @@ layout_mode = 2
 text = "Exit
 "
 
-[node name="TITLE" type="Sprite2D" parent="."]
-position = Vector2(216, 177)
-scale = Vector2(0.5928571, 0.63492066)
-texture = ExtResource("9_w5vcv")
+[node name="PostProcessing" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 18.0
-offset_top = 557.0
-offset_right = 363.0
-offset_bottom = 743.0
-text = "Projekt na zaliczenie zajęć laboratoryjnych
- z Metody Optymalizacji
-Autorzy:
-Karol Langiewicz
-Kacper Kitowski
-"
+[node name="CRTShader" type="ColorRect" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_h7a2f")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(840, 378.00003)
+scale = Vector2(6.6249995, 6.625)
+sprite_frames = SubResource("SpriteFrames_otjfi")
+animation = &"walking"
+autoplay = "walking"
+frame_progress = 0.65905493
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("5_otjfi")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1484.782, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1484.7816, 357)
+scale = Vector2(7.0495076, 7.0495057)
+texture = ExtResource("5_y6s48")

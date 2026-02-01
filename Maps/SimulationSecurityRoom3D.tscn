@@ -37,7 +37,7 @@ viewport_path = NodePath("Hardware/GameViewport")
 viewport_path = NodePath("Hardware/SimulationViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mdo60"]
-size = Vector3(1.6497612, 1.8218212, 1)
+size = Vector3(1.450038, 3.0226774, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pu2df"]
 shader = ExtResource("12_3qwl8")
@@ -96,7 +96,7 @@ transparent = false
 texture = SubResource("ViewportTexture_p4yuy")
 
 [node name="SimulationMonitor" type="Sprite3D" parent="."]
-transform = Transform3D(0.55701256, 0, -0.33501783, 0, 0.65, 0, 0.33501783, 0, 0.55701256, 5.739339, 0.091055095, -6.4206266)
+transform = Transform3D(0.55701256, 0, -0.33501783, 0, 0.65, 0, 0.33501783, 0, 0.55701256, 5.739339, 0.1528101, -7.105122)
 transparent = false
 texture = SubResource("ViewportTexture_mdo60")
 script = ExtResource("4_mdo60")
@@ -105,7 +105,7 @@ script = ExtResource("4_mdo60")
 transform = Transform3D(1.4749396, 0, 0.43751308, 0, 1.5384617, 0, -0.43751308, 0, 1.4749396, -5.196439, -0.16171971, 13.028033)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SimulationMonitor/SimInteractive"]
-transform = Transform3D(1.931981, 0, -0.008032962, 0, 1.8215863, 0, 0.57837266, 0, 0.026833102, 5.625874, 0.09935226, -7.1304903)
+transform = Transform3D(1.9319811, 0, -0.008032963, 0, 1.8215863, 0, 0.5783727, 0, 0.026833102, 5.6172314, 0.10380471, -7.133079)
 shape = SubResource("BoxShape3D_mdo60")
 
 [node name="Hardware" type="Node" parent="."]
@@ -137,8 +137,13 @@ size = Vector2i(800, 580)
 [node name="Stats" parent="Hardware/GameViewport2" instance=ExtResource("5_lyhur")]
 
 [node name="SimulationViewport" type="SubViewport" parent="Hardware"]
+size = Vector2i(457, 845)
 
 [node name="SimulationPanel" parent="Hardware/SimulationViewport" instance=ExtResource("6_lyhur")]
+anchors_preset = 15
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 
